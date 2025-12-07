@@ -1,6 +1,9 @@
 # 🗳️ AnonVote - Anonymous Voting System - v1.0
 
 <div align="center">
+  
+
+![AnonVote](https://github.com/mr0erek/AnonVote/raw/main/assets/demo.gif)
 
 ![AnonVote Logo](https://img.shields.io/badge/AnonVote-Secure%20Voting-blue?style=for-the-badge&logo=checkmarx)
 
