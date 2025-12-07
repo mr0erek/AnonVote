@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    @apply antialiased;
+  }
+  
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Custom scrollbar for dark mode */
+  .dark-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .dark-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+  }
+  
+  .dark-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full;
+  }
+  
+  .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+  /* Light mode scrollbar */
+  .light-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .light-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+  
+  .light-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+  
+  .light-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+/* Custom Utility Styles */
+@layer utilities {
+  /* Custom animations */
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove spinner from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom selection color */
+::selection {
+  @apply bg-blue-500 text-white;
+}
+
+::-moz-selection {
+  @apply bg-blue-500 text-white;
+}

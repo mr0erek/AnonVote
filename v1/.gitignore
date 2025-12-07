@@ -1,0 +1,84 @@
+# ==============================
+# 🟦 LARAVEL BACKEND IGNORE
+# ==============================
+
+# Dependencies
+backend/vendor/
+backend/node_modules/
+
+# Environment & secret config
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Laravel generated cache/runtime
+backend/storage/*.key
+backend/storage/logs/*
+backend/storage/framework/cache/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/storage/app/public/*
+backend/bootstrap/cache/*.php
+
+# OAuth/Sanctum keys
+backend/storage/oauth-private.key
+backend/storage/oauth-public.key
+
+# Debug / cache files
+backend/.phpunit.result.cache
+backend/.php-cs-fixer.cache
+backend/phpunit.xml
+
+# Lock files (optional — remove if you want strict versioning)
+# backend/composer.lock
+
+# ==============================
+# 🟩 FRONTEND (React + Vite)
+# ==============================
+
+# Dependencies
+frontend/node_modules/
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+
+# Local env config
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Vite dev server files
+frontend/public/hot
+
+# ==============================
+# 🛠 GENERAL IGNORE RULES
+# ==============================
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS/system junk files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database dumps
+*.sql
+*.sqlite
+dump.sql
+backup.sql
+
+
+# ==============================
+# OPTIONAL: If using Docker
+# ==============================
+docker/*.pid
+docker-data/

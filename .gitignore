@@ -1,0 +1,55 @@
+# -------------------------
+# GLOBAL
+# -------------------------
+.DS_Store
+node_modules/
+vendor/
+.env
+.env.*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# -------------------------
+# FRONTEND (Vite + Tailwind)
+# -------------------------
+/frontend/node_modules/
+frontend/dist/
+frontend/.cache
+frontend/.vscode/
+frontend/.idea/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.production.local
+frontend/.env.test.local
+
+# -------------------------
+# BACKEND (Laravel)
+# -------------------------
+/backend/vendor/
+/backend/node_modules/
+/backend/storage/framework/cache
+/backend/storage/framework/sessions
+/backend/storage/framework/views
+/backend/storage/logs/*
+/backend/bootstrap/cache/*.php
+/backend/public/storage
+
+# Ignore compiled frontend-in-backend (if applicable)
+backend/public/build/
+
+# -------------------------
+# System/Editor Files
+# -------------------------
+.vscode/
+.idea/
+*.log
+*.bak
+*.tmp
+
+# -------------------------
+# Composer / Cache
+# -------------------------
+composer.lock
+package-lock.json
