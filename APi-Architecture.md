@@ -127,7 +127,7 @@ sequenceDiagram
 **Request:**
 ```http
 POST /api/external/auth/login HTTP/1.1
-Host: api.anonvote.edu
+Host: api.anonvote.example
 X-API-Key: ak_1234567890abcdef
 Content-Type: application/json
 
@@ -158,7 +158,7 @@ Content-Type: application/json
 **Request:**
 ```http
 GET /api/external/polls?page=1&per_page=10 HTTP/1.1
-Host: api.anonvote.edu
+Host: api.anonvote.example
 X-API-Key: ak_1234567890abcdef
 Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz1234567890
 ```
@@ -201,7 +201,7 @@ Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz1234567890
 **Request:**
 ```http
 POST /api/external/polls HTTP/1.1
-Host: api.anonvote.edu
+Host: api.anonvote.example
 X-API-Key: ak_1234567890abcdef
 Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz1234567890
 Content-Type: application/json
@@ -240,7 +240,7 @@ Content-Type: application/json
 **Request:**
 ```http
 POST /api/external/polls/1/vote HTTP/1.1
-Host: api.anonvote.edu
+Host: api.anonvote.example
 X-API-Key: ak_1234567890abcdef
 Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz1234567890
 Content-Type: application/json
@@ -273,7 +273,7 @@ Content-Type: application/json
 **Request:**
 ```http
 GET /api/external/stats HTTP/1.1
-Host: api.anonvote.edu
+Host: api.anonvote.example
 X-API-Key: ak_1234567890abcdef
 Authorization: Bearer 1|abcdefghijklmnopqrstuvwxyz1234567890
 ```
@@ -399,7 +399,7 @@ else:
 ```javascript
 // AnonVote JavaScript SDK
 class AnonVoteClient {
-  constructor(apiKey, baseUrl = 'https://api.anonvote.edu') {
+  constructor(apiKey, baseUrl = 'https://api.anonvote.example') {
     this.apiKey = apiKey;
     this.baseUrl = baseUrl;
     this.token = null;
@@ -478,7 +478,7 @@ import requests
 from typing import Optional
 
 class AnonVoteClient:
-    def __init__(self, api_key: str, base_url: str = "https://api.anonvote.edu"):
+    def __init__(self, api_key: str, base_url: str = "https://api.anonvote.example"):
         self.api_key = api_key
         self.base_url = base_url
         self.token: Optional[str] = None
@@ -551,7 +551,7 @@ class AnonVoteClient {
     private $baseUrl;
     private $token;
 
-    public function __construct($apiKey, $baseUrl = 'https://api.anonvote.edu') {
+    public function __construct($apiKey, $baseUrl = 'https://api.anonvote.example') {
         $this->apiKey = $apiKey;
         $this->baseUrl = $baseUrl;
     }
@@ -767,7 +767,7 @@ function signRequest(payload, secret) {
 // Usage
 const { timestamp, signature } = signRequest(payload, apiSecret);
 
-fetch('https://api.anonvote.edu/api/external/polls', {
+fetch('https://api.anonvote.example/api/external/polls', {
   method: 'POST',
   headers: {
     'X-API-Key': apiKey,
@@ -876,20 +876,20 @@ graph TD
 ### Documentation
 <!-- - 📘 [API Reference](https://docs.anonvote.edu/api) 
 - 🚀 [Quick Start Guide](https://docs.anonvote.edu/quickstart) -->
-- 💡 [Integration Examples](https://github.com/anonvote/examples)
+- 💡 [Integration Examples](https://github.com/mr0erek/AnonVote/blob/main/README.md#-api-documentation)
 
 <!--
 ### Community
 - 💬 [Developer Forum](https://forum.anonvote.edu)
 - 🐛 [Issue Tracker](https://github.com/anonvote/api/issues)
-- 📧 [Email Support](mailto:api-support@anonvote.edu)
+- 📧 [Email Support](mailto:api-support@anonvote.edu) 
 
 ### SLA Guarantees
 - ✅ 99.9% uptime
 - ✅ < 200ms average response time
 - ✅ 24/7 support for Enterprise tier
 - ✅ 99.99% data durability
-
+-->
 ---
 
 **Last Updated:** December 8, 2025
