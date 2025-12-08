@@ -37,6 +37,7 @@
 - [Database Schema](#-database-schema)
 - [Security](#-security)
 - [Deployment](#-deployment)
+- [Real World Case Study](https://github.com/mr0erek/AnonVote/blob/main/CaseStudy.md)
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
