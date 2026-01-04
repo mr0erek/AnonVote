@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    nginx
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
@@ -17,28 +18,28 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory
+# Set working directory (Laravel root)
 WORKDIR /var/www
 
-# Copy application files
+# Copy Laravel application
 COPY . .
 
-# Install dependencies
-RUN composer install --optimize-autoloader --no-dev
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www
-RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 storage bootstrap/cache
 
-# Copy nginx config
-RUN pwd
-COPY ./backend/docker/nginx.conf /etc/nginx/nginx.conf
+# Copy nginx config (FIXED PATH)
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
-# Expose port
+# Expose Railway port
 EXPOSE 8080
 
-# Start services
+# Start Laravel + nginx
 CMD php artisan migrate --force && \
+    php artisan config:clear && \
     php artisan config:cache && \
     php artisan route:cache && \
     php-fpm -D && \
