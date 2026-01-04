@@ -42,7 +42,6 @@ COPY ./backend/docker/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
 
-# CMD  ["sh", "-c", "cd /var/www/backend && php artisan migrate --force && php artisan config:clear && php artisan config:cache && php artisan route:cache && php-fpm -D && nginx -g 'daemon off;'"]
 CMD php artisan migrate --force && \
     php artisan config:clear && \
     php artisan config:cache && \
