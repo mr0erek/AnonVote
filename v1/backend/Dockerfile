@@ -32,13 +32,14 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 storage bootstrap/cache
 
 # Copy nginx config (FIXED PATH)
-COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./backend/docker/nginx.conf /etc/nginx/nginx.conf
 
 # Expose Railway port
 EXPOSE 8080
 
 # Start Laravel + nginx
-CMD php artisan migrate --force && \
+CMD cd backend && \
+    php artisan migrate --force && \
     php artisan config:clear && \
     php artisan config:cache && \
     php artisan route:cache && \
