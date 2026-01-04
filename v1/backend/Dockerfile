@@ -38,14 +38,15 @@ RUN chown -R www-data:www-data /var/www/backend \
     && chmod -R 775 storage bootstrap/cache
 
 # ⚠ FIX TYPO FIRST: ngnix.conf → nginx.conf
-COPY backend/docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./backend/docker/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 8080
 
-CMD cd /var/www/backend && \
-    php artisan migrate --force && \
-    php artisan config:clear && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    php-fpm -D && \
-    nginx -g 'daemon off;'
+CMD  CMD ["sh", "-c", "cd /var/www/backend && php artisan migrate --force && php artisan config:clear && php artisan config:cache && php artisan route:cache && php-fpm -D && nginx -g 'daemon off;'"]
+# # cd /var/www/backend && \
+#     php artisan migrate --force && \
+#     php artisan config:clear && \
+#     php artisan config:cache && \
+#     php artisan route:cache && \
+#     php-fpm -D && \
+#     nginx -g 'daemon off;'
