@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-# Install system dependencies
+# System dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -12,33 +12,37 @@ RUN apt-get update && apt-get install -y \
     nginx \
     && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
+# PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Install Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set working directory (Laravel root)
+# Base directory
 WORKDIR /var/www
 
-# Copy Laravel application
+# Copy v1 contents (backend + frontend)
 COPY . .
 
-# Install PHP dependencies
+# 🔑 MOVE INTO LARAVEL ROOT (THIS WAS MISSING / MISPLACED)
+WORKDIR /var/www/backend
+
+# DEBUG (you can remove after success)
+RUN pwd && ls -la composer.json
+
+# Install dependencies (NOW composer.json EXISTS)
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www \
+# Permissions
+RUN chown -R www-data:www-data /var/www/backend \
     && chmod -R 775 storage bootstrap/cache
 
-# Copy nginx config (FIXED PATH)
-COPY ./backend/docker/nginx.conf /etc/nginx/nginx.conf
+# ⚠ FIX TYPO FIRST: ngnix.conf → nginx.conf
+COPY backend/docker/nginx.conf /etc/nginx/nginx.conf
 
-# Expose Railway port
 EXPOSE 8080
 
-# Start Laravel + nginx
-CMD cd backend && \
+CMD cd /var/www/backend && \
     php artisan migrate --force && \
     php artisan config:clear && \
     php artisan config:cache && \
