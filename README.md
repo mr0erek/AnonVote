@@ -1,3 +1,6 @@
+> [!NOTE]
+> **This whole project is done via vibe-coding, with all markdowns expect this message and some backend tweaks for hosting backend.**
+
 # 🗳️ AnonVote - Anonymous Voting System - v1.0
 
 <div align="center">
